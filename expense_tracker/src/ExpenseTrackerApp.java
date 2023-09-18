@@ -1,5 +1,8 @@
 import javax.swing.table.DefaultTableModel;
 
+/**
+ * The ExpenseTrackerApp class allows users to add/remove daily transactions.
+ */
 public class ExpenseTrackerApp {
 
   public static void main(String[] args) {
