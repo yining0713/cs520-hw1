@@ -23,6 +23,7 @@ Create a file named ```InputValidation.java```  to validate the ```amount``` and
 1. The ```amount``` should be greater than 0 and less than 1000. 
 2. It should be a valid number. 
 3. The ```category``` should be a valid string input from the following list: "food", "travel", "bills", "entertainment", "other" .
+4. You should display error messages on the GUI and not accept the invalid input.
 
 ## Manual Review
 Here are some examples of satisfying ```non-functional`` requirements:
@@ -35,3 +36,6 @@ Here are some examples of violating ```non-functional``` requirements:
 1.  Modularity
 • The app does not apply the MVC architecture pattern.
 • The app should declare the following packages and their classes: model, view, controller. 
+
+#Understandibility
+For the understandability section, we will be inspecting your git log. You should include either the .git folder or else a gitLog.(pdf | txt).
