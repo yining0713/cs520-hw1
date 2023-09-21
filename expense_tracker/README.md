@@ -23,7 +23,8 @@ Create a file named ```InputValidation.java```  to validate the ```amount``` and
 1. The ```amount``` should be greater than 0 and less than 1000. 
 2. It should be a valid number. 
 3. The ```category``` should be a valid string input from the following list: "food", "travel", "bills", "entertainment", "other" .
-4. You should display error messages on the GUI and not accept the invalid input.
+4. You should display error messages on the GUI and not accept the invalid input. . You should throw an appropriate exception. 
+5. Update the ExpenseTrackerApp.java with the input validation steps for adding transaction.
 
 ## Manual Review
 Here are some examples of satisfying ```non-functional`` requirements:
