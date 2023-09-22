@@ -25,8 +25,17 @@ public class ExpenseTrackerApp {
     view.getAddTransactionBtn().addActionListener(e -> {
       
       // Get transaction data from view
-      double amount = view.getAmountField(); 
+      double amount = 0; 
+      try {
+        amount = view.getAmountField(); 
+      } catch (java.lang.NumberFormatException error) {
+        InputValidation.infoBox("Please input a valid number for the amount."
+        , "Error: Invalid input");
+      }
+      InputValidation.InputValidationAmount(amount);
+
       String category = view.getCategoryField();
+      InputValidation.InputValidationCategory(category);
 
       // Create transaction object
       Transaction t = new Transaction(amount, category);
