@@ -23,6 +23,8 @@ public class ExpenseTrackerApp {
 
     // Handle add transaction button clicks
     view.getAddTransactionBtn().addActionListener(e -> {
+
+      boolean isValid = true;
       
       // Get transaction data from view
       double amount = 0; 
@@ -31,17 +33,21 @@ public class ExpenseTrackerApp {
       } catch (java.lang.NumberFormatException error) {
         InputValidation.infoBox("Please input a valid number for the amount."
         , "Error: Invalid input");
+        isValid = false;
       }
-      InputValidation.InputValidationAmount(amount);
+      
+      isValid = InputValidation.InputValidationAmount(amount);
 
       String category = view.getCategoryField();
-      InputValidation.InputValidationCategory(category);
+      isValid = InputValidation.InputValidationCategory(category);
 
-      // Create transaction object
-      Transaction t = new Transaction(amount, category);
+      if (isValid){
+        // Create transaction object
+        Transaction t = new Transaction(amount, category);
 
-      // Call controller to add transaction
-      view.addTransaction(t);
+        // Call controller to add transaction
+        view.addTransaction(t);
+      }
     });
 
   }
