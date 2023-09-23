@@ -4,32 +4,29 @@ import java.util.List;
 
 public class InputValidation {
 
+    public static String amountNotInRangeError = "Please enter a number between 0 and 1000.";
+    public static String amountNotDigitError = "Please input a valid number for the amount.";
     private static List<String> categories = List.of("food", "travel", "bills", "entertainment", "other");
-    private static String categoryError = String.format("Please enter one of the following categories: %s, %s, %s, %s, and %s.", 
+    public static String categoryError = String.format("Please enter one of the following categories: %s, %s, %s, %s, and %s.", 
         categories.get(0), categories.get(1), categories.get(2), categories.get(3), categories.get(4));
 
     /**
      * Displays an info box with a title and a specific error message
      * @param infoMessage   the specific error message
-     * @param titleBar  the title for the info box
      */
-    public static void generateErrorDialog(String infoMessage, String titleBar)
+    public static void generateErrorDialog(String infoMessage)
     {
-        JOptionPane.showMessageDialog(null, infoMessage, titleBar, JOptionPane.INFORMATION_MESSAGE);
+        String errorTitle = "Error: Invalid input";
+        JOptionPane.showMessageDialog(null, infoMessage, errorTitle, JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**
-     * Evaluates the amount. Needs to be between 0 and 1000 (inclusive)
+     * Evaluates the amount. Needs to be between 0 and 1000 (exclusive)
      * @param amount the amount that the user entered. 
      *                  ExpenseTrackerApp checks if the string is digits so we can assume it's a valid number
      */
-    public static boolean validateAmount(double amount){
-        String amountError = "Please enter a number between 0 and 1000.";
-        if (amount > 1000 || amount < 0) {
-            generateErrorDialog(amountError, "Error: Invalid Input");
-            return false;
-        } 
-        return true;
+    public static boolean isInRangeAmount(double amount){
+        return (amount < 1000 && amount > 0);
     };
 
     /**
@@ -38,11 +35,7 @@ public class InputValidation {
      * 
      * @param category  the user input for category.
      */
-    public static boolean validateCategory(String category){
-        if (!categories.contains(category)){
-            generateErrorDialog(categoryError, "Error: Invalid Input");
-            return false;
-        }
-        return true;
+    public static boolean isValidCategory(String category){
+        return categories.contains(category);
     }
 }

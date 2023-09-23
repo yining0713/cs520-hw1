@@ -24,7 +24,7 @@ public class ExpenseTrackerApp {
     // Handle add transaction button clicks
     view.getAddTransactionBtn().addActionListener(e -> {
 
-      boolean isValid = true;
+      boolean isAmountDigit = true;
       
       // Get transaction data from view
       double amount = 0; 
@@ -33,20 +33,24 @@ public class ExpenseTrackerApp {
       try {
         amount = view.getAmountField(); 
       } catch (java.lang.NumberFormatException error) {
-        InputValidation.generateErrorDialog("Please input a valid number for the amount."
-        , "Error: Invalid input");
-        isValid = false;
+        InputValidation.generateErrorDialog(InputValidation.amountNotDigitError);
+        isAmountDigit = false;
       }
 
-      // Check if the user entered an amount between 0 and 1000 (inclusive)
-      isValid = InputValidation.validateAmount(amount);
-      
+      boolean isAmountInRange = InputValidation.isInRangeAmount(amount);
+      if (!isAmountInRange){
+        InputValidation.generateErrorDialog(InputValidation.amountNotInRangeError);
+      }
+
       String category = view.getCategoryField();
       // Check if the user entered a valid category
-      isValid = InputValidation.validateCategory(category);
-
+      boolean isCategoryValid = InputValidation.isValidCategory(category);
+      if (!isCategoryValid){
+        InputValidation.generateErrorDialog(InputValidation.categoryError);
+      }
+      
       // Add the transaction only if both the amount and category are valid input.
-      if (isValid){
+      if (isAmountDigit && isCategoryValid && isAmountInRange){
         // Create transaction object
         Transaction t = new Transaction(amount, category);
 
