@@ -4,6 +4,10 @@ import java.util.List;
 
 public class InputValidation {
 
+    /*
+     * Define the error messages for each type of input errors.
+     * Will be shown in the message dialog window.
+     */
     public static String amountNotInRangeError = "Please enter a number between 0 and 1000.";
     public static String amountNotDigitError = "Please input a valid number for the amount.";
     private static List<String> categories = List.of("food", "travel", "bills", "entertainment", "other");
@@ -12,7 +16,7 @@ public class InputValidation {
 
     /**
      * Displays an info box with a title and a specific error message
-     * @param infoMessage   the specific error message
+     * @param infoMessage   the error message specific to a type of error
      */
     public static void generateErrorDialog(String infoMessage)
     {
@@ -24,6 +28,7 @@ public class InputValidation {
      * Evaluates the amount. Needs to be between 0 and 1000 (exclusive)
      * @param amount the amount that the user entered. 
      *                  ExpenseTrackerApp checks if the string is digits so we can assume it's a valid number
+     * @return true if the amount is bigger than 0 and smaller than 1000, false otherwise.
      */
     public static boolean isInRangeAmount(double amount){
         return (amount < 1000 && amount > 0);
@@ -34,6 +39,7 @@ public class InputValidation {
      * Case sensitive, needs to be in lowercase
      * 
      * @param category  the user input for category.
+     * @return  true if the category is within the five words above, false otherwise.
      */
     public static boolean isValidCategory(String category){
         return categories.contains(category);
