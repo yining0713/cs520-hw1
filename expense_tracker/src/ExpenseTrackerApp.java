@@ -33,17 +33,17 @@ public class ExpenseTrackerApp {
       try {
         amount = view.getAmountField(); 
       } catch (java.lang.NumberFormatException error) {
-        InputValidation.infoBox("Please input a valid number for the amount."
+        InputValidation.generateErrorDialog("Please input a valid number for the amount."
         , "Error: Invalid input");
         isValid = false;
       }
 
       // Check if the user entered an amount between 0 and 1000 (inclusive)
-      isValid = InputValidation.InputValidationAmount(amount);
+      isValid = InputValidation.validateAmount(amount);
       
       String category = view.getCategoryField();
       // Check if the user entered a valid category
-      isValid = InputValidation.InputValidationCategory(category);
+      isValid = InputValidation.validateCategory(category);
 
       // Add the transaction only if both the amount and category are valid input.
       if (isValid){
