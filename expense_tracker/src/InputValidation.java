@@ -2,6 +2,10 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import java.util.List;
 
+/**
+ * The class provides methods that validate the input values
+ * and a method that generates the dialog window and displays the error messages to users.
+ */
 public class InputValidation {
 
     /*
