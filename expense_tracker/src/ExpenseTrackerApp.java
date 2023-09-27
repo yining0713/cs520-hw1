@@ -37,9 +37,12 @@ public class ExpenseTrackerApp {
         isAmountDigit = false;
       }
 
-      boolean isAmountInRange = InputValidation.isInRangeAmount(amount);
-      if (!isAmountInRange){
-        InputValidation.generateErrorDialog(InputValidation.amountNotInRangeError);
+      boolean isAmountInRange = false;
+      if (isAmountDigit){
+        isAmountInRange = InputValidation.isInRangeAmount(amount);
+        if (!isAmountInRange){
+          InputValidation.generateErrorDialog(InputValidation.amountNotInRangeError);
+        }
       }
 
       String category = view.getCategoryField();
